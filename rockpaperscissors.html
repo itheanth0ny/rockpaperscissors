@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+
+<head>
+ 
+</head>
+<body>
+  
+  <script>
+        var playerScore = 0;
+        var cpuScore = 0; 
+        var i;
+
+      function myPlay() {
+        let playerSel = prompt("Rock, Paper, Scissors?")
+        let strword = playerSel.toString();
+        let playerSelection = strword.toUpperCase().charAt(0)+strword.toLowerCase().slice(1);
+          alert("player chose " + playerSelection);
+          return(playerSelection);
+      }
+
+      function computerPlay() {
+        let cpuOption = ["Rock", "Paper","Scissors"];
+        let cpuNumber = Math.floor(Math.random()*3);
+        let cpuPlay = cpuOption[cpuNumber];
+        alert("computer chose " + cpuPlay);
+        return(cpuPlay);
+      }
+
+      function singleRound() {
+          let playerSelection = myPlay();
+          let cpuPlay = computerPlay();
+        if (playerSelection == cpuPlay) {
+            alert("Draw!");
+        } else if (playerSelection == "Rock" && cpuPlay == "Paper") {
+            alert("You lose! Paper beats rock.");
+            cpuScore = cpuScore + 1;
+        } else if (playerSelection == "Rock" && cpuPlay == "Scissors") {
+            alert("You win! Rock beats scissors.");
+            playerScore = playerScore + 1;
+        } else if (playerSelection == "Paper" && cpuPlay == "Rock") {
+            alert("You win! Paper beats rock.");
+            playerScore = playerScore + 1;
+        } else if (playerSelection == "Paper" && cpuPlay == "Scissors") {
+            alert("You lose! Scissors beats paper.");
+            cpuScore = cpuScore + 1;
+        } else if (playerSelection == "Scissors" && cpuPlay == "Rock") {
+            alert("You lose! Rock beats scissors.");
+            cpuScore = cpuScore + 1;
+        } else if(playerSelection == "Scissors" && cpuPlay == "Paper") {
+            alert("You win. Scissors beats paper.");
+            playerScore = playerScore + 1;
+        } else {
+            alert("error")
+        }
+        
+        return[playerScore,cpuScore];
+        
+      }
+
+      function game() {
+
+        
+        
+        
+
+
+          for (i = 0; i < 5; i++) {
+            var oneRound = singleRound();
+            let indexOne = oneRound[0];
+            let indexTwo = oneRound[1];
+
+            alert("Your score: " + oneRound[0] + " Computer Score: " + oneRound[1]);
+          }
+          return([playerScore,cpuScore]);
+          
+      }
+      game();
+      </script>
+      
+</body>
+</html>
